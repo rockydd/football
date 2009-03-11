@@ -5,13 +5,23 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
   <title>Teams: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <%= stylesheet_link_tag *%w[scaffold standard] %>
 </head>
 <body>
 
+<div id='navcontainer'>
+  <ul id='navlist'>
+    <li> Welcome <%= current_user.login if current_user %>
+    <li> Home </li>
+    <li> Team</li>
+    <li> Game</li>
+    <li> Profile</li>
+  </ul>
+</div>
+  
 <p style="color: green"><%= flash[:notice] %></p>
-
+<div id='content'>
 <%= yield  %>
-
+</div>
 </body>
 </html>

@@ -2,7 +2,7 @@ require 'ruby-debug'
 class TeamsController < ApplicationController
   include AuthenticatedSystem
 
-  before_filter :login_required,:only=> [:new,:edit,:create,:destroy,:update]
+  before_filter :login_required,:only=> [:new,:edit,:create,:destroy,:update,:join]
   # GET /teams
   # GET /teams.xml
   def index
@@ -49,6 +49,7 @@ class TeamsController < ApplicationController
 
     respond_to do |format|
       if @team.save
+        @team.members<<current_user
         flash[:notice] = 'Team was successfully created.'
         format.html { redirect_to(@team) }
         format.xml  { render :xml => @team, :status => :created, :location => @team }
@@ -87,4 +88,19 @@ class TeamsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  def join
+
+    @team = Team.find(params[:id])
+    respond_to do |format|
+      if @team.members.include? current_user
+        flash[:error] = "#current_user.login is already joined this team"
+        format.html {redirect_to team_path(@team)}
+        format.xml { head 401}
+      else
+        format.html {redirect_to team_path(@team)}
+        format.xml {head :ok}
+      end
+    end 
+  end
 end
+

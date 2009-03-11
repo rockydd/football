@@ -8,6 +8,7 @@ class TeamsControllerTest < ActionController::TestCase
   end
 
   test "should get new" do
+    login_as(users(:aaron))
     get :new
     assert_response :success
   end
@@ -18,6 +19,8 @@ class TeamsControllerTest < ActionController::TestCase
       post :create, :team => {:name=>'dragon' }
       assert t=Team.find_by_name('dragon')
       assert_equal users(:aaron).id,t.owner_id
+      assert_equal 1,t.members.size
+      assert_equal users(:aaron).id,t.members[0].id
     end
 
     assert_redirected_to team_path(assigns(:team))
@@ -29,6 +32,7 @@ class TeamsControllerTest < ActionController::TestCase
   end
 
   test "should get edit" do
+    login_as(users(:aaron))
     get :edit, :id => teams(:dd).id
     assert_response :success
   end
@@ -49,5 +53,12 @@ class TeamsControllerTest < ActionController::TestCase
   end
 
   test "should join team" do
+    qt=users(:quentin)
+    dd=teams(:dd)
+    post :join,:id => dd.id
+    assert_redirected_to :controller=>:session,:action => :new
+    login_as :quentin
+    post :join, :id => teams(:dd).id 
+    assert_redirected_to team_path(dd)
   end
 end

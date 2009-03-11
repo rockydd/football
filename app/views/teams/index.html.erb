@@ -3,11 +3,13 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Creator</th>
   </tr>
 
 <% for team in @teams %>
   <tr>
-    <td><%=h team.name %></td>
+    <td><%= link_to team.name,team_path(team) %></td>
+    <td><%= link_to (h team.owner.login),team.owner%></td>
     <td><%= link_to 'Show', team %></td>
     <td><%= link_to 'Edit', edit_team_path(team) %></td>
     <td><%= link_to 'Destroy', team, :confirm => 'Are you sure?', :method => :delete %></td>
