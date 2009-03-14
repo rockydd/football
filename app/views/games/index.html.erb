@@ -1,0 +1,22 @@
+<h1>Listing games</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Creator</th>
+  </tr>
+
+<% for game in @games %>
+  <tr>
+    <td><%=h game.name %></td>
+    <td><%=h game.creator %></td>
+    <td><%= link_to 'Show', game %></td>
+    <td><%= link_to 'Edit', edit_game_path(game) %></td>
+    <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New game', new_game_path %>
