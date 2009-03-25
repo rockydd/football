@@ -2,6 +2,9 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
+  def index
+    @users = User.find(:all,:order=>'login')
+  end
   def show
     @user = User.find(params[:id])
   end

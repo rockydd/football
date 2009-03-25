@@ -3,5 +3,7 @@
 
 zh:
   hello: "Hello world"
-  welcome: "huan ying"
+  header:
+    welcome: "huan ying"
   team: "zhan dui"
+  player: "qiu yuan"
