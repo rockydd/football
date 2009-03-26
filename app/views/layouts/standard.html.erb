@@ -11,11 +11,12 @@
 
 <div id='navcontainer'>
   <ul id='navlist'>
-    <li> Welcome <%= current_user.login if current_user %>
-    <li> Home </li>
-    <li> Team</li>
-    <li> Game</li>
-    <li> Profile</li>
+    <li> <%= t 'header.welcome'%><%= current_user.login if current_user %>
+    <li> <%= link_to 'Home', :controller=>:home%> </li>
+    <li> <%= link_to  t('team'), :controller=>:teams%></li>
+    <li> <%= link_to  t('player'), :controller=>:users%></li>
+    <li> <%= link_to 'Game', :controller=>:games%></li>
+    <li> <%= link_to 'Profile', :controller=>:users%></li>
   </ul>
 </div>
   
