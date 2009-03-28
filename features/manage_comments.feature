@@ -1,8 +1,8 @@
 Feature: Manage comments
-  In order to [goal]
-  [stakeholder]
-  wants [behaviour]
-  
+  In order to [give comments to players and teams and games]
+  [users]
+  wants [to added comments]
+
   Scenario: Register new comment
     Given I am on the new comment page
     When I fill in "Title" with "title 1"
