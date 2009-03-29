@@ -1,3 +1,12 @@
+Given /^I am logged in$/ do
+  @current_user = create_user
+
+  visit_new_session_path
+  fill_in "Login", :with => @current_user.login
+  fill_in "Password", :with => valid_user_attributes['password']
+  click_button
+end
+
 Given /^the following comments:$/ do |comments|
   Comment.create!(comments.hashes)
 end

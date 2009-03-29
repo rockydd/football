@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  include AuthenticatedSystem
   # GET /comments
   # GET /comments.xml
   def index
