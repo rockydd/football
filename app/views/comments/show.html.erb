@@ -15,7 +15,7 @@
 
 <p>
   <b>User:</b>
-  <%=h @comment.user_id %>
+  <%=h User.find(@comment.user_id).name %>
 </p>
 
 
