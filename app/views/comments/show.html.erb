@@ -1,3 +1,8 @@
+
+<p>
+  <%=h (@comment.user_id && User.find(@comment.user_id).name) || 'anonymous' %> says:
+</p>
+
 <p>
   <b>Title:</b>
   <%=h @comment.title %>
@@ -12,12 +17,6 @@
   <b>Commentable:</b>
   <%=h @comment.commentable_id %>
 </p>
-
-<p>
-  <b>User:</b>
-  <%=h User.find(@comment.user_id).name %>
-</p>
-
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>

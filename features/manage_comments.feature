@@ -3,14 +3,14 @@ Feature: Manage comments
   [users]
   wants [to added comments]
 
-  Scenario: Add new comment
+  Scenario: Add new comment anonymously
     Given I am on the new comment page
     When I fill in "Title" with "title 1"
     And I fill in "Body" with "body 1"
     And I press "Create"
     Then I should see "title 1"
     And I should see "body 1"
-    And I should see "rocky says:"
+    And I should see "anonymous says:"
 
   Scenario: Delete comment
     Given the following comments:
