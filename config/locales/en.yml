@@ -1,7 +1,9 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-zh:
+en:
   hello: "Hello world"
-  welcome: "huan ying"
-  team: "zhan dui"
+  header:
+    welcome: "Welcome"
+  player: "Player"
+  team: "Team"

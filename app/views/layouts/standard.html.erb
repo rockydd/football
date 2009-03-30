@@ -11,7 +11,7 @@
 
 <div id='navcontainer'>
   <ul id='navlist'>
-    <li> <%= t 'header.welcome'%><%= current_user.login if current_user %>
+    <li> <%= t('header.welcome')+" "%><%= current_user.login.capitalize if current_user %>
     <li> <%= link_to 'Home', :controller=>:home%> </li>
     <li> <%= link_to  t('team'), :controller=>:teams%></li>
     <li> <%= link_to  t('player'), :controller=>:users%></li>
@@ -19,7 +19,7 @@
     <li> <%= link_to 'Profile', :controller=>:users%></li>
   </ul>
 </div>
-  
+
 <p style="color: green"><%= flash[:notice] %></p>
 <div id='content'>
 <%= yield  %>

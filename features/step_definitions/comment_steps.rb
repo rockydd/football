@@ -1,9 +1,28 @@
-Given /^I am logged in$/ do
-  @current_user = create_user
+Given /^an normal user (.+) with the password (.+)/ do |username, password|
+  User.create!(:login=>username,:password=>password,:password_confirmation=>password,:email=>"#{username}@gmail.com")
+end
 
-  visit_new_session_path
+Given /^(.+) is not logged in/ do |username|
+
+end
+
+When /^(.+) visits the login page/ do |username|
+  visit '/login'
+end
+
+When /^(.+) successfully submits the login form/ do |user_name|
+  User.find_by_login()
+  fills_in 'Login', :with => ''
+  fills_in 'Password', :with => 'abracadabra'
+  clicks_button
+end
+
+Given /^I logged in as (.+) with password (.+)$/ do |username,password|
+  @current_user = User.create!(:login=>username,:password=>password,:password_confirmation=>password,:email=>"#{username}@gmail.com")
+
+  visit new_session_path
   fill_in "Login", :with => @current_user.login
-  fill_in "Password", :with => valid_user_attributes['password']
+  fill_in "Password", :with => @current_user.password
   click_button
 end
 

@@ -1,6 +1,6 @@
 
 <p>
-  <%=h (@comment.user_id && User.find(@comment.user_id).name) || 'anonymous' %> says:
+  <%=h (@comment.user_id && User.find(@comment.user_id).login) || 'anonymous' %> says:
 </p>
 
 <p>

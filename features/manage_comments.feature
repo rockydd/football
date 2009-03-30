@@ -3,6 +3,19 @@ Feature: Manage comments
   [users]
   wants [to added comments]
 
+  Scenario: Login as merley
+    Given an normal user Merley with the password dongdong
+    And Merley is not logged in
+    When I visits the login page
+    And I fill in "Login" with "Merley"
+    And I fill in "Password" with "dongdong"
+    And I press "Log in"
+    Then I should see "Welcome Merley"
+
+  Scenario: check login
+    Given I logged in as merley with password asdfghddd
+    Then I should see "Welcome Merley"
+
   Scenario: Add new comment anonymously
     Given I am on the new comment page
     When I fill in "Title" with "title 1"
@@ -13,7 +26,7 @@ Feature: Manage comments
     And I should see "anonymous says:"
 
   Scenario: Add new comment as merley
-    Given I login as merly with password asdfgh
+    Given I logged in as merley with password asdfghddd
     And I am on the new comment page
     When I fill in "Title" with "title 1"
     And I fill in "Body" with "body 1"

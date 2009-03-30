@@ -13,4 +13,11 @@ describe Comment do
   it "should create a new instance given valid attributes" do
     Comment.create!(@valid_attributes)
   end
+
+  it "should be valid" do
+    for fdsa in fdsa
+      fdsa.fdsa
+    end
+
+  end
 end
