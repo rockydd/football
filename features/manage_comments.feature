@@ -12,6 +12,18 @@ Feature: Manage comments
     And I should see "body 1"
     And I should see "anonymous says:"
 
+  Scenario: Add new comment as merley
+    Given I login as merly with password asdfgh
+    And I am on the new comment page
+    When I fill in "Title" with "title 1"
+    And I fill in "Body" with "body 1"
+    And I press "Create"
+    Then I should see "title 1"
+    And I should see "body 1"
+    And I should see "merley says:"
+
+
+
   Scenario: Delete comment
     Given the following comments:
       |title|body|user_id|
