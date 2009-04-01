@@ -48,7 +48,14 @@ Then /^I should see the following comments:$/ do |comments|
 end
 
 #team
-Given /a team named (.+)/ do |team_name|
-  t=Team.create(:name=>team_name)
+Given /a team named (.+) created by (.+)/ do |team_name, user_name|
+  u=User.create!(:login=>user_name,:password=>'password',:password_confirmation=>'password',:email=>"#{user_name}@gmail.com")
+  t=Team.create!(:name=>team_name,:owner_id=>u.id)
 end
 
+
+Given /^I follow the team (.+) link/ do |team_name|
+  t=Team.find_by_name(team_name)
+  #visit "/teams/#{t.id}"
+  click_link(team_name)
+end

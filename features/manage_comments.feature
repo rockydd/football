@@ -36,14 +36,23 @@ Feature: Manage comments
     And I should see "merley says:"
 
   Scenario: added comments for team
-    Given a team named dd
-    And I am on the team page 
-    When I fill in "body" with "good team"
+    Given a team named dd created by rocky
+    And I am on the team page
+    And I follow the team dd link
+    When I fill in "Comment" with "good team"
     And I press "say it"
     Then I should see "merley says:"
     And I should see  "good team"
 
- 
+
+  Scenario: test team page
+    Given a team named dd created by rocky
+    When I am on the team page
+    And I follow the team dd link
+    And I fill in "comment_body" with "good team"
+    Then I should see "Comment"
+
+
 
   Scenario: Delete comment
     Given the following comments:

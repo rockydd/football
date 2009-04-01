@@ -16,6 +16,18 @@
 
 <%= link_to 'Edit', edit_team_path(@team) %> |
 <%= link_to 'Back', teams_path %>
+
+<div id="comments">
+  <% form_for(@comment) do |f| %>
+  <p>
+    <%= f.label :body, 'Comment'%><br />
+    <%= f.text_area :body,:rows=>10 %>
+  </p>
+  <p>
+    <%= f.submit 'Say it' %>
+  </p>
+  <% end %>
+</div>
 </div>
 <div id='sidebar'>
   <%= link_to 'Join',edit_team_path %>

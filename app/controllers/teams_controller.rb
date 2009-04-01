@@ -18,7 +18,7 @@ class TeamsController < ApplicationController
   # GET /teams/1.xml
   def show
     @team = Team.find(params[:id])
-
+    @comment = Comment.new
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @team }
@@ -100,7 +100,7 @@ class TeamsController < ApplicationController
         format.html {redirect_to team_path(@team)}
         format.xml {head :ok}
       end
-    end 
+    end
   end
 end
 
