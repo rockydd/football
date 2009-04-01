@@ -5,5 +5,9 @@ zh:
   hello: "Hello world"
   header:
     welcome: "huan ying"
+    login: "DengLu"
+    logout: "Tuichu"
+    signup: "Zhuce"
   team: "zhan dui"
   player: "qiu yuan"
+

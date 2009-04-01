@@ -7,6 +7,7 @@
 
 <% for user in @users%>
   <tr>
+    <td><%= image_tag user.avatar.url(:tiny) %></td>
     <td><%= link_to user.login,user_path(user) %></td>
     <td><%= link_to 'Show', user%></td>
   </tr>

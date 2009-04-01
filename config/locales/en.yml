@@ -3,7 +3,9 @@
 
 en:
   hello: "Hello world"
-  header:
-    welcome: "Welcome"
-  player: "Player"
+  welcome: "Welcome"
   team: "Team"
+  header:
+    login: "Login"
+    logout: "Logout"
+    signup: "Sign Up"

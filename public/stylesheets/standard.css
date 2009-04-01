@@ -36,8 +36,15 @@
 
 #navlist a:hover { color: #CCC; }
 
+#status {
+    background:#EEF9EB url(../pics/headnavbot.gif) no-repeat scroll left bottom;
+    padding:5px 10px 4px;
+    text-align:right;
+}
+
+
 #content{
-    margin-top: 90px; 
+    margin-top: 90px;
 }
 
 #main{
