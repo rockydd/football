@@ -9,17 +9,29 @@
 </head>
 <body>
 
-<div id='navcontainer'>
-  <ul id='navlist'>
-    <li> <%= t 'header.welcome'%><%= current_user.login if current_user %>
-    <li> <%= link_to 'Home', :controller=>:home%> </li>
-    <li> <%= link_to  t('team'), :controller=>:teams%></li>
-    <li> <%= link_to  t('player'), :controller=>:users%></li>
-    <li> <%= link_to 'Game', :controller=>:games%></li>
-    <li> <%= link_to 'Profile', :controller=>:users%></li>
-  </ul>
+<div id='header'>
+
+  <div id='navcontainer'>
+    <ul id='navlist'>
+      <li> <%= link_to 'Home', :controller=>:home%> </li>
+      <li> <%= link_to  t('team'), :controller=>:teams%></li>
+      <li> <%= link_to  t('player'), :controller=>:users%></li>
+      <li> <%= link_to 'Game', :controller=>:games%></li>
+      <li> <%= link_to 'Profile', :controller=>:users%></li>
+    </ul>
+  </div>
+  <div id='status'>
+      <%= t 'header.welcome'%>
+      <% if current_user %>
+      <%= current_user.login if current_user %>
+      <%= link_to t('header.logout'), logout_path %>
+      <% else %>
+      <%= link_to t('header.signup'), signup_path %>
+      <%= link_to t('header.login'), login_path %>
+      <% end %>
+  </div>
 </div>
-  
+
 <p style="color: green"><%= flash[:notice] %></p>
 <div id='content'>
 <%= yield  %>
