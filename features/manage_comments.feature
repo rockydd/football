@@ -35,7 +35,15 @@ Feature: Manage comments
     And I should see "body 1"
     And I should see "merley says:"
 
+  Scenario: added comments for team
+    Given a team named dd
+    And I am on the team page 
+    When I fill in "body" with "good team"
+    And I press "say it"
+    Then I should see "merley says:"
+    And I should see  "good team"
 
+ 
 
   Scenario: Delete comment
     Given the following comments:

@@ -46,3 +46,9 @@ Then /^I should see the following comments:$/ do |comments|
     end
   end
 end
+
+#team
+Given /a team named (.+)/ do |team_name|
+  t=Team.create(:name=>team_name)
+end
+

@@ -7,6 +7,8 @@ module NavigationHelpers
     when /the new comment page/
       new_comment_path
 
+    when /the team page/
+      team_path
     
     # Add more page name => path mappings here
     
