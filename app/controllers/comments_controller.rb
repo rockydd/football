@@ -1,10 +1,17 @@
+require 'ruby-debug'
+
 class CommentsController < ApplicationController
   include AuthenticatedSystem
   # GET /comments
   # GET /comments.xml
   def index
     @commentable = find_commentable
-    @comments = @commentable.comments
+    if @commentable
+      @comments = @commentable.comments
+    else
+      @comments = Comment.all
+    end
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -42,8 +49,17 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.xml
   def create
-    @comment = Comment.new(params[:comment])
+
+    @commentable = find_commentable
+    if @commentable
+      @comment = @commentable.comments.build(params[:comment])
+    else
+      @comment = Comment.new(params[:comment])
+    end
+    debugger
+
     @comment.user_id = current_user && current_user.id
+
 
     respond_to do |format|
       if @comment.save
@@ -89,8 +105,11 @@ class CommentsController < ApplicationController
   def find_commentable
     params.each do |name,value|
       if name =~ /(.+)_id$/
+        puts "######"
+        puts "#{name}=#{value}"
         return $1.classify.constantize.find(value)
       end
     end
+    return nil
   end
 end

@@ -19,6 +19,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
     @comment = Comment.new
+    @comment.commentable_type="Team"
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @team }
