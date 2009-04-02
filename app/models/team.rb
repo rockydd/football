@@ -6,6 +6,7 @@ class Team < ActiveRecord::Base
   belongs_to :owner,
     :class_name=>"User",
     :foreign_key => "owner_id"
+  has_many :comments, :as=>:commentable
 
     validates_presence_of     :name
     validates_format_of       :name,     :with => Authentication.name_regex,  :message => Authentication.bad_name_message, :allow_nil => false 

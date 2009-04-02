@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.xml
   def index
-    @comments = Comment.all
+    @commentable = find_commentable
+    @comments = @commentable.comments
 
     respond_to do |format|
       format.html # index.html.erb
@@ -82,6 +83,14 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(comments_url) }
       format.xml  { head :ok }
+    end
+  end
+  private
+  def find_commentable
+    params.each do |name,value|
+      if name =~ /(.+)_id$/
+        return $1.classify.constantize.find(value)
+      end
     end
   end
 end
