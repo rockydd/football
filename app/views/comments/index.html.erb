@@ -9,8 +9,9 @@
 
 <% @comments.each do |comment| %>
   <tr>
+    <td><%=h comment.speaker_name + " says:"%></td>
+
     <td><%=h comment.title %></td>
-    <td><%=h comment.speaker_name%></td>
     <td><%=h comment.body %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>

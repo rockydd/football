@@ -23,7 +23,7 @@ Feature: Manage comments
     And I press "Create"
     Then I should see "title 1"
     And I should see "body 1"
-    And I should see "anonymous says:"
+    And I should see "guest says:"
 
   Scenario: Add new comment as merley
     Given I logged in as merley with password asdfghddd
@@ -37,12 +37,13 @@ Feature: Manage comments
 
   Scenario: added comments for team
     Given a team named dd created by rocky
+    And I logged in as merley with password fffffffff
     And I am on the team page
     And I follow the team dd link
     When I fill in "Comment" with "good team"
     And I press "say it"
     Then I should see "merley says:"
-    And I should see  "good team"
+    And I should see "good team"
 
 
   Scenario: test team page
@@ -63,7 +64,7 @@ Feature: Manage comments
       |title 4|body 4|user_id 4|
     When I delete the 3rd comment
     Then I should see the following comments:
-      |title|body|
-      |title 1|body 1|
-      |title 2|body 2|
-      |title 4|body 4|
+      |user|title|body|
+      |guest says:|title 1|body 1|
+      |guest says:|title 2|body 2|
+      |guest says:|title 4|body 4|
