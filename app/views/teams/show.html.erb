@@ -21,7 +21,7 @@
   <b>Comments:</b>
   <% @team.comments.each do |comment| %>
   <p>
-    <%= comment.user.login + " says:" %>
+    <%= comment.speaker_name + " says:" %>
     <%= comment.body %>
   </p>
   <% end%>

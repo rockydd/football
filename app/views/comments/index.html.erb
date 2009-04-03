@@ -2,18 +2,16 @@
 
 <table>
   <tr>
+    <th>User</th>
     <th>Title</th>
     <th>Body</th>
-    <th>Commentable</th>
-    <th>User</th>
   </tr>
 
 <% @comments.each do |comment| %>
   <tr>
     <td><%=h comment.title %></td>
+    <td><%=h comment.speaker_name%></td>
     <td><%=h comment.body %></td>
-    <td><%=h comment.commentable_id %></td>
-    <td><%=h comment.user_id %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete %></td>

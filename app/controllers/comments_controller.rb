@@ -33,6 +33,7 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.xml
   def new
+    @commentable = find_commentable
     @comment = Comment.new
 
     respond_to do |format|
@@ -56,7 +57,6 @@ class CommentsController < ApplicationController
     else
       @comment = Comment.new(params[:comment])
     end
-    debugger
 
     @comment.user_id = current_user && current_user.id
 
@@ -64,7 +64,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         flash[:notice] = 'Comment was successfully created.'
-        format.html { redirect_to(@comment) }
+        format.html { redirect_to(@commentable ? @commentable : {:id=>nil}) }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
         format.html { render :action => "new" }
