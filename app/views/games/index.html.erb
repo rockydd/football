@@ -3,13 +3,25 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Capacity</th>
     <th>Creator</th>
+    <th>Admin</th>
+    <th>Game type</th>
+    <th>Status</th>
+    <th>Start time</th>
+    <th>End time</th>
   </tr>
 
-<% for game in @games %>
+<% @games.each do |game| %>
   <tr>
     <td><%=h game.name %></td>
-    <td><%=h game.creator %></td>
+    <td><%=h game.capacity %></td>
+    <td><%=h game.creator_id %></td>
+    <td><%=h game.admin_id %></td>
+    <td><%=h game.game_type %></td>
+    <td><%=h game.status %></td>
+    <td><%=h game.start_time %></td>
+    <td><%=h game.end_time %></td>
     <td><%= link_to 'Show', game %></td>
     <td><%= link_to 'Edit', edit_game_path(game) %></td>
     <td><%= link_to 'Destroy', game, :confirm => 'Are you sure?', :method => :delete %></td>

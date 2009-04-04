@@ -8,11 +8,35 @@
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label :creator %><br />
-    <%= f.text_field :creator %>
+    <%= f.label :capacity %><br />
+    <%= f.text_field :capacity %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.label :creator_id %><br />
+    <%= f.text_field :creator_id %>
+  </p>
+  <p>
+    <%= f.label :admin_id %><br />
+    <%= f.text_field :admin_id %>
+  </p>
+  <p>
+    <%= f.label :game_type %><br />
+    <%= f.text_field :game_type %>
+  </p>
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :start_time %><br />
+    <%= f.datetime_select :start_time %>
+  </p>
+  <p>
+    <%= f.label :end_time %><br />
+    <%= f.datetime_select :end_time %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
   </p>
 <% end %>
 

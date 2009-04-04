@@ -1,8 +1,10 @@
 class GamesController < ApplicationController
+  include AuthenticatedSystem
+
   # GET /games
   # GET /games.xml
   def index
-    @games = Game.find(:all)
+    @games = Game.all
 
     respond_to do |format|
       format.html # index.html.erb
