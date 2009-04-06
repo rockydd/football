@@ -1,0 +1,10 @@
+<p>
+  <b>Comments:</b>
+  <% comments = comments || @commentable.comments %>
+  <% comments.each do |comment| %>
+<p>
+  <%= comment.speaker_name + " says:" %>
+  <%= comment.body %>
+</p>
+<% end%>
+</p>
