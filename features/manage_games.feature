@@ -37,3 +37,12 @@ Feature: Manage games
       |name 2|2|2|2|game_type 2|status 2|2009-04-05 12:00:00 UTC|2009-04-05 12:00:00 UTC|
       |name 4|4|4|4|game_type 4|status 4|2009-04-05 12:00:00 UTC|2009-04-05 12:00:00 UTC|
 
+  Scenario: create new round for a league game
+    Give a new league game named CIG
+    And game CIG was registered by dd,tt,xiangrui
+    And I am on the game page
+    When I follow the game link 'CIG'
+    Then I should see 'dd'
+    And I should see 'tt'
+    And I should see 'xiangrui'
+

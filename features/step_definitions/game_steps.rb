@@ -1,4 +1,7 @@
 Given /^the following games:$/ do |games|
+  puts "####"
+  puts Given.class.to_s
+  puts "####"
   Game.create!(games.hashes)
 end
 
