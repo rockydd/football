@@ -6,7 +6,8 @@ module NavigationHelpers
       root_path
     when /the new game page/
       new_game_path
-
+    when /the game page/
+      games_path
     when /the new comment page/
       new_comment_path
 

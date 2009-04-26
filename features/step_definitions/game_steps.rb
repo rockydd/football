@@ -1,7 +1,4 @@
 Given /^the following games:$/ do |games|
-  puts "####"
-  puts Given.class.to_s
-  puts "####"
   Game.create!(games.hashes)
 end
 
@@ -21,3 +18,35 @@ Then /^I should see the following games:$/ do |games|
     end
   end
 end
+
+
+Given /^a new league game named (.+)$/ do |game_name|
+  Game.create!(:name=> game_name,:capacity => 20)
+end
+
+Given /^game (.+) was registered by (.+)$/ do |game_name,teams|
+  game = Game.find_by_name(game_name)
+  u=User.create!(:login=>'rocky', :password=>'password',:password_confirmation=>'password',:email=>'rockydd@gmail.com')
+  teams.split(',').each do |name|
+    t=Team.create!(:name=>name,:owner_id=>u.id)
+    game.register(t)
+  end
+end
+
+When /^I follow the game link 'CIG'$/ do
+  game = Game.find_by_name('CIG')
+  visit game_path(game)
+end
+
+# Then /^I should see 'dd'$/ do
+#   pending
+# end
+
+# Then /^I should see 'tt'$/ do
+#   pending
+# end
+
+# Then /^I should see 'xiangrui'$/ do
+#   pending
+# end
+

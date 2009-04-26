@@ -37,6 +37,12 @@ Feature: Manage games
       |name 2|2|2|2|game_type 2|status 2|2009-04-05 12:00:00 UTC|2009-04-05 12:00:00 UTC|
       |name 4|4|4|4|game_type 4|status 4|2009-04-05 12:00:00 UTC|2009-04-05 12:00:00 UTC|
 
+  Scenario: register a game
+    Given a new league game named CIG
+	And I login as 'rocky'
+	When I am on the game page
+	And I follow the game link 'CIG'
+	And I select
   Scenario: create new round for a league game
     Given a new league game named CIG
     And game CIG was registered by dd,tt,xiangrui
