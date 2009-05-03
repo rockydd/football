@@ -84,4 +84,12 @@ class GamesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def register
+    game = Game.find(params[:id])
+    team = Team.find(params[:team_id])
+    game.register(team)
+
+    redirect_to :action=> :show
+  end
 end

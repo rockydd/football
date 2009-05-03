@@ -41,10 +41,18 @@
 <p>
   <b> Teams:</b>
 </p>
-<% for team in @game.teams %>
+<% @game.teams.each do |team| %>
   <p>
     <%= link_to h(team.name),team %>
   </p>
+<% end %>
+
+<p>
+<% if current_user %>
+  <% form_for :game, :url => {:action => :register, :id => @game.id} do |form| -%>
+    <%= select_tag :team_id,  current_user.teams.collect{|t| "<option value='#{t.id}'>#{t.name}</option>"} %>
+    <%= submit_tag 'register'%>
+  <% end %>
 <% end %>
 
 <%= link_to 'Edit', edit_game_path(@game) %> |

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   include Authentication::ByPassword
   include Authentication::ByCookieToken
   has_attached_file :avatar, :styles => {  :small => "150x150>", :tiny => "20x20>"}
+  has_many :teams,:foreign_key=>'owner_id'
 
   validates_presence_of     :login
   validates_length_of       :login,    :within => 3..40

@@ -1,6 +1,6 @@
 class Game < ActiveRecord::Base
 
-  has_many :teams, :through => :registrations
+  has_and_belongs_to_many :teams, :join_table=> 'registrations'
   has_many :registrations
 
   def register(team)
